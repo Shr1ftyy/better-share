@@ -1,4 +1,6 @@
 const std = @import("std");
+// TODO: use libgit.zig
+const libgit2 = @import("libgit2.zig");
 
 // Although this function looks imperative, note that its job is to
 // declaratively construct a build graph that will be executed by an external
@@ -35,6 +37,11 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+
+    // TODO: use libgit.zig
+    // const libgit = try libgit2.create(b, target, optimize);
+
+    // libgit.link(exe);
 
     exe.linkLibC();
     exe.addIncludePath(b.path("include/"));

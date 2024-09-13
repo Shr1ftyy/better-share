@@ -4,6 +4,10 @@ const git2 = @cImport({
     @cInclude("git2.h");
 });
 
+const diff_print = @cImport({
+    @cInclude("diff_print.h");
+});
+
 pub fn main() !void {
     // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
     std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
@@ -16,7 +20,7 @@ pub fn main() !void {
     const stdout = bw.writer();
 
     const result = git2.git_libgit2_init();
-    std.debug.print("init: {d}\n", .{result});
+    std.debug.print("libgit2 init: {d}\n", .{result});
     defer _ = git2.git_libgit2_shutdown();
 
     const path = ".";
@@ -39,13 +43,17 @@ pub fn main() !void {
     // load the stats into a buffer
     var buf = git2.git_buf{ .ptr = null, .reserved = 0, .size = 0 };
 
-    const loadErr = git2.git_diff_stats_to_buf(&buf, stats, git2.GIT_DIFF_STATS_INCLUDE_SUMMARY, 256);
+    const loadErr = git2.git_diff_stats_to_buf(&buf, stats, git2.GIT_DIFF_STATS_FULL | git2.GIT_DIFF_STATS_SHORT | git2.GIT_DIFF_STATS_NUMBER | git2.GIT_DIFF_STATS_INCLUDE_SUMMARY, 256);
     std.debug.print("statsErr: {d}\n", .{loadErr});
 
     // print the stats
     std.debug.print("diff summary ptr: {any}\n", .{buf.ptr});
     std.debug.print("diff summary reserved: {any}\n", .{buf.reserved});
     std.debug.print("diff summary size: {any}\n", .{buf.size});
+    std.debug.print("diff summary:\n{s}\n", .{buf.ptr});
+    // yo
+    //
+    // diff_git.diff_print_info_init_fromdiff
 
     try stdout.print("Run `zig build test` to run the tests.\n", .{});
 
