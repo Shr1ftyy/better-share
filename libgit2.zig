@@ -24,6 +24,7 @@ pub fn create(
 
     try flags.appendSlice(&.{
         "-DLIBGIT2_NO_FEATURES_H",
+        "-DGIT_IO_POLL=1",
         "-DGIT_TRACE=1",
         "-DGIT_THREADS=0",
         "-DGIT_USE_FUTIMENS=1",
@@ -33,6 +34,8 @@ pub fn create(
         "-DGIT_HTTPS=1",
         "-DGIT_MBEDTLS=1",
         "-DGIT_SHA1_MBEDTLS=1",
+        "-DGIT_SHA256_MBEDTLS=1",
+        "-DGIT_HTTPPARSER_LLHTTP=1",
         "-DGIT_HTTPPARSER_HTTPPARSER=1",
         "-fno-sanitize=all",
     });
@@ -49,11 +52,11 @@ pub fn create(
         ret.addCSourceFiles(.{ .files = win32_srcs, .flags = flags.items });
 
         if (target.result.isGnu()) {
-            // ret.addCSourceFiles(.{ .files = posix_srcs, .flags = flags.items });
+            ret.addCSourceFiles(.{ .files = posix_srcs, .flags = flags.items });
             ret.addCSourceFiles(.{ .files = unix_srcs, .flags = flags.items });
         }
     } else {
-        // ret.addCSourceFiles(.{ .files = posix_srcs, .flags = flags.items });
+        ret.addCSourceFiles(.{ .files = posix_srcs, .flags = flags.items });
         ret.addCSourceFiles(.{ .files = unix_srcs, .flags = flags.items });
     }
 
@@ -74,6 +77,32 @@ pub fn create(
         "-DMAX_NAME_COUNT=10000",
     } });
 
+    // if (target.result.os.tag == .windows) {
+    //     ret.addCSourceFiles(.{ .files = zlib_srcs, .flags = &.{
+    //         "-DNO_VIZ",
+    //         "-DSTDC",
+    //         "-DNO_GZIP",
+    //         "-DHAVE_SYS_TYPES_H",
+    //         "-DHAVE_STDINT_H",
+    //         "-DHAVE_STDDEF_H",
+    //         "-DZ_HAVE_UNISTD_H",
+    //         "-D_LFS64_LARGEFILE",
+    //         "-D_LARGEFILE64_SOURCE=1",
+    //     } });
+    // } else {
+    //     ret.addCSourceFiles(.{ .files = zlib_srcs, .flags = &.{
+    //         "-DNO_VIZ",
+    //         "-DSTDC",
+    //         "-DNO_GZIP",
+    //         "-DHAVE_SYS_TYPES_H",
+    //         "-DHAVE_STDINT_H",
+    //         "-DHAVE_STDDEF_H",
+    //     } });
+    // }
+    //
+    ret.addIncludePath(b.path("third-party/http-parser"));
+    ret.addCSourceFile(.{ .file = b.path("third-party/http-parser/http_parser.c") });
+
     ret.addIncludePath(b.path("libgit2/include"));
     ret.addIncludePath(b.path("libgit2/src"));
     ret.addIncludePath(b.path("libgit2/deps/pcre"));
@@ -87,12 +116,22 @@ pub fn create(
     ret.addIncludePath(b.path("libgit2/deps/pcre"));
     ret.addIncludePath(b.path("libgit2/deps/xdiff"));
     ret.addIncludePath(b.path("libgit2/deps/llhttp"));
-    ret.addIncludePath(.{ .cwd_relative = "/Users/shr1ftyy/Downloads/http-parser" });
-    ret.addIncludePath(.{ .cwd_relative = "/opt/homebrew/opt/mbedtls/include/" });
+    ret.addIncludePath(b.path("libgit2/deps/zlib"));
 
-    ret.addLibraryPath(.{ .cwd_relative = "/Users/shr1ftyy/Downloads/http-parser" });
+    // TODO: this works fine for brew users on macs - what about other platforms?
+    if (target.result.os.tag == .macos) {
+        ret.addIncludePath(.{ .cwd_relative = "/opt/homebrew/opt/mbedtls/include/" });
+        ret.addLibraryPath(.{ .cwd_relative = "/opt/homebrew/opt/zlib/lib/" });
+        ret.addLibraryPath(.{ .cwd_relative = "/opt/homebrew/opt/mbedtls/lib/" });
+        ret.addLibraryPath(.{ .cwd_relative = "/opt/homebrew/Cellar/libssh2/1.11.0_1/lib/" });
+    }
+
     ret.linkSystemLibrary("mbedtls");
-    ret.linkSystemLibrary("http_parser");
+    ret.linkSystemLibrary("mbedx509");
+    ret.linkSystemLibrary("mbedcrypto");
+    ret.linkSystemLibrary("z");
+    ret.linkSystemLibrary("libssh2");
+    // ret.linkSystemLibrary("http_parser");
     ret.linkLibC();
 
     return ret;
@@ -102,6 +141,7 @@ const srcs = &.{
     // root_path ++ "libgit2/deps/http-parser/http_parser.c",
     root_path ++ "libgit2/src/libgit2/transports/httpparser.c",
     root_path ++ "libgit2/src/libgit2/transports/httpclient.c",
+    root_path ++ "libgit2/src/libgit2/transports/ssh_libssh2.c",
     root_path ++ "libgit2/src/util/allocators/failalloc.c",
     root_path ++ "libgit2/src/util/allocators/stdalloc.c",
     root_path ++ "libgit2/src/libgit2/streams/openssl.c",
@@ -109,6 +149,8 @@ const srcs = &.{
     root_path ++ "libgit2/src/libgit2/streams/socket.c",
     root_path ++ "libgit2/src/libgit2/streams/tls.c",
     // root_path ++ "mbedtls.c",
+    root_path ++ "libgit2/src/libgit2/transports/ssh.c",
+    root_path ++ "libgit2/src/libgit2/transports/ssh_exec.c",
     root_path ++ "libgit2/src/libgit2/transports/auth.c",
     root_path ++ "libgit2/src/libgit2/transports/credential.c",
     root_path ++ "libgit2/src/libgit2/transports/http.c",
@@ -127,6 +169,8 @@ const srcs = &.{
     root_path ++ "libgit2/deps/xdiff/xprepare.c",
     root_path ++ "libgit2/deps/xdiff/xutils.c",
     root_path ++ "libgit2/src/util/hash/mbedtls.c",
+    root_path ++ "libgit2/src/util/rand.c",
+    root_path ++ "libgit2/src/libgit2/streams/mbedtls.c",
     root_path ++ "libgit2/src/util/alloc.c",
     root_path ++ "libgit2/src/libgit2/annotated_commit.c",
     root_path ++ "libgit2/src/libgit2/apply.c",
@@ -145,15 +189,17 @@ const srcs = &.{
     root_path ++ "libgit2/src/libgit2/commit.c",
     root_path ++ "libgit2/src/libgit2/commit_graph.c",
     root_path ++ "libgit2/src/libgit2/commit_list.c",
-    // root_path ++ "libgit2/src/libgit2/config.c",
-    // root_path ++ "libgit2/src/libgit2/config_cache.c",
-    // // root_path ++ "libgit2/src/libgit2/config_entries.c",
-    // root_path ++ "libgit2/src/libgit2/config_list.c",
-    // root_path ++ "libgit2/src/libgit2/config_file.c",
-    // root_path ++ "libgit2/src/libgit2/config_mem.c",
-    // root_path ++ "libgit2/src/libgit2/config_file_fuzzer.c",
-    // root_path ++ "libgit2/src/libgit2/config_parse.c",
-    // root_path ++ "libgit2/src/libgit2/config_snapshot.c",
+    root_path ++ "libgit2/src/util/fs_path.c",
+    root_path ++ "libgit2/src/util/str.c",
+    root_path ++ "libgit2/src/libgit2/settings.c",
+    root_path ++ "libgit2/src/libgit2/config.c",
+    root_path ++ "libgit2/src/libgit2/config_cache.c",
+    // root_path ++ "libgit2/src/libgit2/config_entries.c",
+    root_path ++ "libgit2/src/libgit2/config_list.c",
+    root_path ++ "libgit2/src/libgit2/config_file.c",
+    root_path ++ "libgit2/src/libgit2/config_mem.c",
+    root_path ++ "libgit2/src/libgit2/config_parse.c",
+    root_path ++ "libgit2/src/libgit2/config_snapshot.c",
     root_path ++ "libgit2/src/libgit2/crlf.c",
     root_path ++ "libgit2/src/util/date.c",
     root_path ++ "libgit2/src/libgit2/delta.c",
@@ -171,6 +217,7 @@ const srcs = &.{
     root_path ++ "libgit2/src/libgit2/email.c",
     root_path ++ "libgit2/src/libgit2/fetch.c",
     root_path ++ "libgit2/src/libgit2/fetchhead.c",
+    root_path ++ "libgit2/src/libgit2/buf.c",
     root_path ++ "libgit2/src/util/filebuf.c",
     root_path ++ "libgit2/src/libgit2/filter.c",
     root_path ++ "libgit2/src/util/futils.c",
@@ -194,6 +241,8 @@ const srcs = &.{
     root_path ++ "libgit2/src/util/net.c",
     // root_path ++ "libgit2/src/libgit2/netops.c",
     root_path ++ "libgit2/src/libgit2/notes.c",
+    root_path ++ "libgit2/src/libgit2/grafts.c",
+    root_path ++ "libgit2/src/util/utf8.c",
     root_path ++ "libgit2/src/libgit2/object_api.c",
     root_path ++ "libgit2/src/libgit2/object.c",
     root_path ++ "libgit2/src/libgit2/odb.c",
@@ -282,6 +331,18 @@ const pcre_srcs = &.{
     root_path ++ "libgit2/deps/pcre/pcre_valid_utf8.c",
     root_path ++ "libgit2/deps/pcre/pcre_version.c",
     root_path ++ "libgit2/deps/pcre/pcre_xclass.c",
+};
+
+const zlib_srcs = &.{
+    root_path ++ "libgit2/deps/zlib/adler32.c",
+    root_path ++ "libgit2/deps/zlib/crc32.c",
+    root_path ++ "libgit2/deps/zlib/deflate.c",
+    root_path ++ "libgit2/deps/zlib/infback.c",
+    root_path ++ "libgit2/deps/zlib/inffast.c",
+    root_path ++ "libgit2/deps/zlib/inflate.c",
+    root_path ++ "libgit2/deps/zlib/inftrees.c",
+    root_path ++ "libgit2/deps/zlib/trees.c",
+    root_path ++ "libgit2/deps/zlib/zutil.c",
 };
 
 const posix_srcs = &.{
