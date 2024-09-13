@@ -5,7 +5,7 @@ const libgit2 = @import("libgit2.zig");
 // Although this function looks imperative, note that its job is to
 // declaratively construct a build graph that will be executed by an external
 // runner.
-pub fn build(b: *std.Build) void {
+pub fn build(b: *std.Build) !void {
     // Standard target options allows the person running `zig build` to choose
     // what target to build for. Here we do not override the defaults, which
     // means any target is allowed, and the default is native. Other options
@@ -39,29 +39,51 @@ pub fn build(b: *std.Build) void {
     });
 
     // TODO: use libgit.zig
-    // const libgit = try libgit2.create(b, target, optimize);
+    const libgit = try libgit2.create(b, target, optimize);
 
+    // libgit.linkSystemLibrary("ssl");
+    // libgit.linkSystemLibrary("crypto");
+    // const mbedtls = b.dependency("mbedtls", .{ .target = target, .optimize = optimize });
+    // libgit.linkLibrary(mbedtls.artifact("mbedtls"));
+
+    // const zlib = b.dependency("zlib", .{ .target = target, .optimize = optimize });
+    // libgit.linkLibrary(zlib.artifact("z"));
+
+    // const ssh2 = b.dependency("ssh2", .{ .target = target, .optimize = optimize });
+    // libgit.linkLibrary(ssh2.artifact("ssh2"));
+
+    // libgit.installHeadersDirectory(b.path("libgit2/include"), "", .{});
+
+    exe.addIncludePath(b.path("libgit2/include"));
+    // exe.addIncludePath(b.path("libgit2/src"));
+    // exe.addIncludePath(b.path("libgit2/src/libgit2"));
+    // exe.addIncludePath(b.path("libgit2/deps/pcre"));
+
+    b.installArtifact(libgit);
+
+    exe.linkLibrary(libgit);
+    // exe.linkSystemLibrary(libgit);
     // libgit.link(exe);
 
-    exe.linkLibC();
-    exe.addIncludePath(b.path("include/"));
+    // exe.linkLibC();
+    // exe.addIncludePath(b.path("include/"));
 
-    const target_os = target.query.os_tag orelse .macos;
-    // const target_arch = target.arch;
-    switch (target_os) {
-        .linux => {
-            exe.addLibraryPath(b.path("third-party/git2"));
-        },
-        .macos => {
-            const brewIncludeStr = "/opt/homebrew/lib/";
-            exe.addLibraryPath(.{ .cwd_relative = brewIncludeStr });
-        },
-        else => {
-            @panic("Unsupported platform");
-        },
-    }
+    // const target_os = target.query.os_tag orelse .macos;
+    // // const target_arch = target.arch;
+    // switch (target_os) {
+    //     .linux => {
+    //         exe.addLibraryPath(b.path("third-party/git2"));
+    //     },
+    //     .macos => {
+    //         const brewIncludeStr = "/opt/homebrew/lib/";
+    //         exe.addLibraryPath(.{ .cwd_relative = brewIncludeStr });
+    //     },
+    //     else => {
+    //         @panic("Unsupported platform");
+    //     },
+    // }
 
-    exe.linkSystemLibrary("git2");
+    // exe.linkSystemLibrary("git2");
 
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default

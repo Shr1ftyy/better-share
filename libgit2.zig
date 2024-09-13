@@ -4,23 +4,15 @@ fn root() []const u8 {
     return std.fs.path.dirname(@src().file) orelse unreachable;
 }
 
-const root_path = root() ++ "/";
-pub const include_dir = root_path ++ "libgit2/include";
-
-pub const Library = struct {
-    step: *std.build.LibExeObjStep,
-
-    pub fn link(self: Library, other: *std.build.LibExeObjStep) void {
-        other.addIncludePath(include_dir);
-        other.linkLibrary(self.step);
-    }
-};
+// const root_path = root() ++ "/";
+const root_path = "";
+// pub const include_dir = root_path ++ "libgit2/include";
 
 pub fn create(
-    b: *std.build.Builder,
-    target: std.zig.CrossTarget,
+    b: *std.Build,
+    target: std.Build.ResolvedTarget,
     optimize: std.builtin.OptimizeMode,
-) !Library {
+) !*std.Build.Step.Compile {
     const ret = b.addStaticLibrary(.{
         .name = "git2",
         .target = target,
@@ -33,44 +25,45 @@ pub fn create(
     try flags.appendSlice(&.{
         "-DLIBGIT2_NO_FEATURES_H",
         "-DGIT_TRACE=1",
-        "-DGIT_THREADS=1",
+        "-DGIT_THREADS=0",
         "-DGIT_USE_FUTIMENS=1",
         "-DGIT_REGEX_PCRE",
-        "-DGIT_SSH=1",
+        "-DGIT_SSH=0",
         "-DGIT_SSH_MEMORY_CREDENTIALS=1",
         "-DGIT_HTTPS=1",
         "-DGIT_MBEDTLS=1",
         "-DGIT_SHA1_MBEDTLS=1",
+        "-DGIT_HTTPPARSER_HTTPPARSER=1",
         "-fno-sanitize=all",
     });
 
-    if (64 == target.getCpuArch().ptrBitWidth())
+    if (64 == target.result.ptrBitWidth())
         try flags.append("-DGIT_ARCH_64=1");
 
-    ret.addCSourceFiles(srcs, flags.items);
-    if (target.isWindows()) {
+    ret.addCSourceFiles(.{ .files = srcs, .flags = flags.items });
+    if (target.result.os.tag == .windows) {
         try flags.appendSlice(&.{
             "-DGIT_WIN32",
             "-DGIT_WINHTTP",
         });
-        ret.addCSourceFiles(win32_srcs, flags.items);
+        ret.addCSourceFiles(.{ .files = win32_srcs, .flags = flags.items });
 
-        if (target.getAbi().isGnu()) {
-            ret.addCSourceFiles(posix_srcs, flags.items);
-            ret.addCSourceFiles(unix_srcs, flags.items);
+        if (target.result.isGnu()) {
+            // ret.addCSourceFiles(.{ .files = posix_srcs, .flags = flags.items });
+            ret.addCSourceFiles(.{ .files = unix_srcs, .flags = flags.items });
         }
     } else {
-        ret.addCSourceFiles(posix_srcs, flags.items);
-        ret.addCSourceFiles(unix_srcs, flags.items);
+        // ret.addCSourceFiles(.{ .files = posix_srcs, .flags = flags.items });
+        ret.addCSourceFiles(.{ .files = unix_srcs, .flags = flags.items });
     }
 
-    if (target.isLinux())
+    if (target.result.os.tag == .linux)
         try flags.appendSlice(&.{
             "-DGIT_USE_NSEC=1",
             "-DGIT_USE_STAT_MTIM=1",
         });
 
-    ret.addCSourceFiles(pcre_srcs, &.{
+    ret.addCSourceFiles(.{ .files = pcre_srcs, .flags = &.{
         "-DLINK_SIZE=2",
         "-DNEWLINE=10",
         "-DPOSIX_MALLOC_THRESHOLD=10",
@@ -79,171 +72,190 @@ pub fn create(
         "-DMATCH_LIMIT=10000000",
         "-DMAX_NAME_SIZE=32",
         "-DMAX_NAME_COUNT=10000",
-    });
+    } });
 
-    ret.addIncludePath(include_dir);
-    ret.addIncludePath(root_path ++ "libgit2/src");
-    ret.addIncludePath(root_path ++ "libgit2/deps/pcre");
-    ret.addIncludePath(root_path ++ "libgit2/deps/http-parser");
+    ret.addIncludePath(b.path("libgit2/include"));
+    ret.addIncludePath(b.path("libgit2/src"));
+    ret.addIncludePath(b.path("libgit2/deps/pcre"));
+    // ret.addIncludePath(b.path("libgit2/deps/http-parser"));
+    ret.addIncludePath(b.path("libgit2/include"));
+    ret.addIncludePath(b.path("libgit2/src"));
+    ret.addIncludePath(b.path("libgit2/src/util"));
+    ret.addIncludePath(b.path("libgit2/src/util/transports"));
+    ret.addIncludePath(b.path("libgit2/src/util/hash"));
+    ret.addIncludePath(b.path("libgit2/src/libgit2"));
+    ret.addIncludePath(b.path("libgit2/deps/pcre"));
+    ret.addIncludePath(b.path("libgit2/deps/xdiff"));
+    ret.addIncludePath(b.path("libgit2/deps/llhttp"));
+    ret.addIncludePath(.{ .cwd_relative = "/Users/shr1ftyy/Downloads/http-parser" });
+    ret.addIncludePath(.{ .cwd_relative = "/opt/homebrew/opt/mbedtls/include/" });
+
+    ret.addLibraryPath(.{ .cwd_relative = "/Users/shr1ftyy/Downloads/http-parser" });
+    ret.linkSystemLibrary("mbedtls");
+    ret.linkSystemLibrary("http_parser");
     ret.linkLibC();
 
-    return Library{ .step = ret };
+    return ret;
 }
 
 const srcs = &.{
-    root_path ++ "libgit2/deps/http-parser/http_parser.c",
-    root_path ++ "libgit2/src/allocators/failalloc.c",
-    root_path ++ "libgit2/src/allocators/stdalloc.c",
-    root_path ++ "libgit2/src/streams/openssl.c",
-    root_path ++ "libgit2/src/streams/registry.c",
-    root_path ++ "libgit2/src/streams/socket.c",
-    root_path ++ "libgit2/src/streams/tls.c",
-    root_path ++ "mbedtls.c",
-    root_path ++ "libgit2/src/transports/auth.c",
-    root_path ++ "libgit2/src/transports/credential.c",
-    root_path ++ "libgit2/src/transports/http.c",
-    root_path ++ "libgit2/src/transports/httpclient.c",
-    root_path ++ "libgit2/src/transports/smart_protocol.c",
-    root_path ++ "libgit2/src/transports/ssh.c",
-    root_path ++ "libgit2/src/transports/git.c",
-    root_path ++ "libgit2/src/transports/smart.c",
-    root_path ++ "libgit2/src/transports/smart_pkt.c",
-    root_path ++ "libgit2/src/transports/local.c",
-    root_path ++ "libgit2/src/xdiff/xdiffi.c",
-    root_path ++ "libgit2/src/xdiff/xemit.c",
-    root_path ++ "libgit2/src/xdiff/xhistogram.c",
-    root_path ++ "libgit2/src/xdiff/xmerge.c",
-    root_path ++ "libgit2/src/xdiff/xpatience.c",
-    root_path ++ "libgit2/src/xdiff/xprepare.c",
-    root_path ++ "libgit2/src/xdiff/xutils.c",
-    root_path ++ "libgit2/src/hash/sha1/mbedtls.c",
-    root_path ++ "libgit2/src/alloc.c",
-    root_path ++ "libgit2/src/annotated_commit.c",
-    root_path ++ "libgit2/src/apply.c",
-    root_path ++ "libgit2/src/attr.c",
-    root_path ++ "libgit2/src/attrcache.c",
-    root_path ++ "libgit2/src/attr_file.c",
-    root_path ++ "libgit2/src/blame.c",
-    root_path ++ "libgit2/src/blame_git.c",
-    root_path ++ "libgit2/src/blob.c",
-    root_path ++ "libgit2/src/branch.c",
-    root_path ++ "libgit2/src/buffer.c",
-    root_path ++ "libgit2/src/cache.c",
-    root_path ++ "libgit2/src/checkout.c",
-    root_path ++ "libgit2/src/cherrypick.c",
-    root_path ++ "libgit2/src/clone.c",
-    root_path ++ "libgit2/src/commit.c",
-    root_path ++ "libgit2/src/commit_graph.c",
-    root_path ++ "libgit2/src/commit_list.c",
-    root_path ++ "libgit2/src/config.c",
-    root_path ++ "libgit2/src/config_cache.c",
-    root_path ++ "libgit2/src/config_entries.c",
-    root_path ++ "libgit2/src/config_file.c",
-    root_path ++ "libgit2/src/config_mem.c",
-    root_path ++ "libgit2/src/config_parse.c",
-    root_path ++ "libgit2/src/config_snapshot.c",
-    root_path ++ "libgit2/src/crlf.c",
-    root_path ++ "libgit2/src/date.c",
-    root_path ++ "libgit2/src/delta.c",
-    root_path ++ "libgit2/src/describe.c",
-    root_path ++ "libgit2/src/diff.c",
-    root_path ++ "libgit2/src/diff_driver.c",
-    root_path ++ "libgit2/src/diff_file.c",
-    root_path ++ "libgit2/src/diff_generate.c",
-    root_path ++ "libgit2/src/diff_parse.c",
-    root_path ++ "libgit2/src/diff_print.c",
-    root_path ++ "libgit2/src/diff_stats.c",
-    root_path ++ "libgit2/src/diff_tform.c",
-    root_path ++ "libgit2/src/diff_xdiff.c",
-    root_path ++ "libgit2/src/errors.c",
-    root_path ++ "libgit2/src/email.c",
-    root_path ++ "libgit2/src/fetch.c",
-    root_path ++ "libgit2/src/fetchhead.c",
-    root_path ++ "libgit2/src/filebuf.c",
-    root_path ++ "libgit2/src/filter.c",
-    root_path ++ "libgit2/src/futils.c",
-    root_path ++ "libgit2/src/graph.c",
-    root_path ++ "libgit2/src/hash.c",
-    root_path ++ "libgit2/src/hashsig.c",
-    root_path ++ "libgit2/src/ident.c",
-    root_path ++ "libgit2/src/idxmap.c",
-    root_path ++ "libgit2/src/ignore.c",
-    root_path ++ "libgit2/src/index.c",
-    root_path ++ "libgit2/src/indexer.c",
-    root_path ++ "libgit2/src/iterator.c",
-    root_path ++ "libgit2/src/libgit2.c",
-    root_path ++ "libgit2/src/mailmap.c",
-    root_path ++ "libgit2/src/merge.c",
-    root_path ++ "libgit2/src/merge_driver.c",
-    root_path ++ "libgit2/src/merge_file.c",
-    root_path ++ "libgit2/src/message.c",
-    root_path ++ "libgit2/src/midx.c",
-    root_path ++ "libgit2/src/mwindow.c",
-    root_path ++ "libgit2/src/net.c",
-    root_path ++ "libgit2/src/netops.c",
-    root_path ++ "libgit2/src/notes.c",
-    root_path ++ "libgit2/src/object_api.c",
-    root_path ++ "libgit2/src/object.c",
-    root_path ++ "libgit2/src/odb.c",
-    root_path ++ "libgit2/src/odb_loose.c",
-    root_path ++ "libgit2/src/odb_mempack.c",
-    root_path ++ "libgit2/src/odb_pack.c",
-    root_path ++ "libgit2/src/offmap.c",
-    root_path ++ "libgit2/src/oidarray.c",
-    root_path ++ "libgit2/src/oid.c",
-    root_path ++ "libgit2/src/oidmap.c",
-    root_path ++ "libgit2/src/pack.c",
-    root_path ++ "libgit2/src/pack-objects.c",
-    root_path ++ "libgit2/src/parse.c",
-    root_path ++ "libgit2/src/patch.c",
-    root_path ++ "libgit2/src/patch_generate.c",
-    root_path ++ "libgit2/src/patch_parse.c",
-    root_path ++ "libgit2/src/path.c",
-    root_path ++ "libgit2/src/pathspec.c",
-    root_path ++ "libgit2/src/pool.c",
-    root_path ++ "libgit2/src/pqueue.c",
-    root_path ++ "libgit2/src/proxy.c",
-    root_path ++ "libgit2/src/push.c",
-    root_path ++ "libgit2/src/reader.c",
-    root_path ++ "libgit2/src/rebase.c",
-    root_path ++ "libgit2/src/refdb.c",
-    root_path ++ "libgit2/src/refdb_fs.c",
-    root_path ++ "libgit2/src/reflog.c",
-    root_path ++ "libgit2/src/refs.c",
-    root_path ++ "libgit2/src/refspec.c",
-    root_path ++ "libgit2/src/regexp.c",
-    root_path ++ "libgit2/src/remote.c",
-    root_path ++ "libgit2/src/repository.c",
-    root_path ++ "libgit2/src/reset.c",
-    root_path ++ "libgit2/src/revert.c",
-    root_path ++ "libgit2/src/revparse.c",
-    root_path ++ "libgit2/src/revwalk.c",
-    root_path ++ "libgit2/src/runtime.c",
-    root_path ++ "libgit2/src/signature.c",
-    root_path ++ "libgit2/src/sortedcache.c",
-    root_path ++ "libgit2/src/stash.c",
-    root_path ++ "libgit2/src/status.c",
-    root_path ++ "libgit2/src/strarray.c",
-    root_path ++ "libgit2/src/strmap.c",
-    root_path ++ "libgit2/src/submodule.c",
-    root_path ++ "libgit2/src/sysdir.c",
-    root_path ++ "libgit2/src/tag.c",
-    root_path ++ "libgit2/src/thread.c",
-    root_path ++ "libgit2/src/threadstate.c",
-    root_path ++ "libgit2/src/trace.c",
-    root_path ++ "libgit2/src/trailer.c",
-    root_path ++ "libgit2/src/transaction.c",
-    root_path ++ "libgit2/src/transport.c",
-    root_path ++ "libgit2/src/tree.c",
-    root_path ++ "libgit2/src/tree-cache.c",
-    root_path ++ "libgit2/src/tsort.c",
-    root_path ++ "libgit2/src/utf8.c",
-    root_path ++ "libgit2/src/util.c",
-    root_path ++ "libgit2/src/varint.c",
-    root_path ++ "libgit2/src/vector.c",
-    root_path ++ "libgit2/src/wildmatch.c",
-    root_path ++ "libgit2/src/worktree.c",
-    root_path ++ "libgit2/src/zstream.c",
+    // root_path ++ "libgit2/deps/http-parser/http_parser.c",
+    root_path ++ "libgit2/src/libgit2/transports/httpparser.c",
+    root_path ++ "libgit2/src/libgit2/transports/httpclient.c",
+    root_path ++ "libgit2/src/util/allocators/failalloc.c",
+    root_path ++ "libgit2/src/util/allocators/stdalloc.c",
+    root_path ++ "libgit2/src/libgit2/streams/openssl.c",
+    root_path ++ "libgit2/src/libgit2/streams/registry.c",
+    root_path ++ "libgit2/src/libgit2/streams/socket.c",
+    root_path ++ "libgit2/src/libgit2/streams/tls.c",
+    // root_path ++ "mbedtls.c",
+    root_path ++ "libgit2/src/libgit2/transports/auth.c",
+    root_path ++ "libgit2/src/libgit2/transports/credential.c",
+    root_path ++ "libgit2/src/libgit2/transports/http.c",
+    root_path ++ "libgit2/src/libgit2/transports/httpclient.c",
+    root_path ++ "libgit2/src/libgit2/transports/smart_protocol.c",
+    // root_path ++ "libgit2/src/libgit2/transports/ssh.c",
+    root_path ++ "libgit2/src/libgit2/transports/git.c",
+    root_path ++ "libgit2/src/libgit2/transports/smart.c",
+    root_path ++ "libgit2/src/libgit2/transports/smart_pkt.c",
+    root_path ++ "libgit2/src/libgit2/transports/local.c",
+    root_path ++ "libgit2/deps/xdiff/xdiffi.c",
+    root_path ++ "libgit2/deps/xdiff/xemit.c",
+    root_path ++ "libgit2/deps/xdiff/xhistogram.c",
+    root_path ++ "libgit2/deps/xdiff/xmerge.c",
+    root_path ++ "libgit2/deps/xdiff/xpatience.c",
+    root_path ++ "libgit2/deps/xdiff/xprepare.c",
+    root_path ++ "libgit2/deps/xdiff/xutils.c",
+    root_path ++ "libgit2/src/util/hash/mbedtls.c",
+    root_path ++ "libgit2/src/util/alloc.c",
+    root_path ++ "libgit2/src/libgit2/annotated_commit.c",
+    root_path ++ "libgit2/src/libgit2/apply.c",
+    root_path ++ "libgit2/src/libgit2/attr.c",
+    root_path ++ "libgit2/src/libgit2/attrcache.c",
+    root_path ++ "libgit2/src/libgit2/attr_file.c",
+    root_path ++ "libgit2/src/libgit2/blame.c",
+    root_path ++ "libgit2/src/libgit2/blame_git.c",
+    root_path ++ "libgit2/src/libgit2/blob.c",
+    root_path ++ "libgit2/src/libgit2/branch.c",
+    // root_path ++ "libgit2/src/libgit2/buffer.c",
+    root_path ++ "libgit2/src/libgit2/cache.c",
+    root_path ++ "libgit2/src/libgit2/checkout.c",
+    root_path ++ "libgit2/src/libgit2/cherrypick.c",
+    root_path ++ "libgit2/src/libgit2/clone.c",
+    root_path ++ "libgit2/src/libgit2/commit.c",
+    root_path ++ "libgit2/src/libgit2/commit_graph.c",
+    root_path ++ "libgit2/src/libgit2/commit_list.c",
+    // root_path ++ "libgit2/src/libgit2/config.c",
+    // root_path ++ "libgit2/src/libgit2/config_cache.c",
+    // // root_path ++ "libgit2/src/libgit2/config_entries.c",
+    // root_path ++ "libgit2/src/libgit2/config_list.c",
+    // root_path ++ "libgit2/src/libgit2/config_file.c",
+    // root_path ++ "libgit2/src/libgit2/config_mem.c",
+    // root_path ++ "libgit2/src/libgit2/config_file_fuzzer.c",
+    // root_path ++ "libgit2/src/libgit2/config_parse.c",
+    // root_path ++ "libgit2/src/libgit2/config_snapshot.c",
+    root_path ++ "libgit2/src/libgit2/crlf.c",
+    root_path ++ "libgit2/src/util/date.c",
+    root_path ++ "libgit2/src/libgit2/delta.c",
+    root_path ++ "libgit2/src/libgit2/describe.c",
+    root_path ++ "libgit2/src/libgit2/diff.c",
+    root_path ++ "libgit2/src/libgit2/diff_driver.c",
+    root_path ++ "libgit2/src/libgit2/diff_file.c",
+    root_path ++ "libgit2/src/libgit2/diff_generate.c",
+    root_path ++ "libgit2/src/libgit2/diff_parse.c",
+    root_path ++ "libgit2/src/libgit2/diff_print.c",
+    root_path ++ "libgit2/src/libgit2/diff_stats.c",
+    root_path ++ "libgit2/src/libgit2/diff_tform.c",
+    root_path ++ "libgit2/src/libgit2/diff_xdiff.c",
+    root_path ++ "libgit2/src/util/errors.c",
+    root_path ++ "libgit2/src/libgit2/email.c",
+    root_path ++ "libgit2/src/libgit2/fetch.c",
+    root_path ++ "libgit2/src/libgit2/fetchhead.c",
+    root_path ++ "libgit2/src/util/filebuf.c",
+    root_path ++ "libgit2/src/libgit2/filter.c",
+    root_path ++ "libgit2/src/util/futils.c",
+    root_path ++ "libgit2/src/libgit2/graph.c",
+    root_path ++ "libgit2/src/util/hash.c",
+    root_path ++ "libgit2/src/libgit2/hashsig.c",
+    root_path ++ "libgit2/src/libgit2/ident.c",
+    root_path ++ "libgit2/src/libgit2/idxmap.c",
+    root_path ++ "libgit2/src/libgit2/ignore.c",
+    root_path ++ "libgit2/src/libgit2/index.c",
+    root_path ++ "libgit2/src/libgit2/indexer.c",
+    root_path ++ "libgit2/src/libgit2/iterator.c",
+    root_path ++ "libgit2/src/libgit2/libgit2.c",
+    root_path ++ "libgit2/src/libgit2/mailmap.c",
+    root_path ++ "libgit2/src/libgit2/merge.c",
+    root_path ++ "libgit2/src/libgit2/merge_driver.c",
+    root_path ++ "libgit2/src/libgit2/merge_file.c",
+    root_path ++ "libgit2/src/libgit2/message.c",
+    root_path ++ "libgit2/src/libgit2/midx.c",
+    root_path ++ "libgit2/src/libgit2/mwindow.c",
+    root_path ++ "libgit2/src/util/net.c",
+    // root_path ++ "libgit2/src/libgit2/netops.c",
+    root_path ++ "libgit2/src/libgit2/notes.c",
+    root_path ++ "libgit2/src/libgit2/object_api.c",
+    root_path ++ "libgit2/src/libgit2/object.c",
+    root_path ++ "libgit2/src/libgit2/odb.c",
+    root_path ++ "libgit2/src/libgit2/odb_loose.c",
+    root_path ++ "libgit2/src/libgit2/odb_mempack.c",
+    root_path ++ "libgit2/src/libgit2/odb_pack.c",
+    root_path ++ "libgit2/src/libgit2/offmap.c",
+    root_path ++ "libgit2/src/libgit2/oidarray.c",
+    root_path ++ "libgit2/src/libgit2/oid.c",
+    root_path ++ "libgit2/src/libgit2/oidmap.c",
+    root_path ++ "libgit2/src/libgit2/pack.c",
+    root_path ++ "libgit2/src/libgit2/pack-objects.c",
+    root_path ++ "libgit2/src/libgit2/parse.c",
+    root_path ++ "libgit2/src/libgit2/patch.c",
+    root_path ++ "libgit2/src/libgit2/patch_generate.c",
+    root_path ++ "libgit2/src/libgit2/patch_parse.c",
+    root_path ++ "libgit2/src/libgit2/path.c",
+    root_path ++ "libgit2/src/libgit2/pathspec.c",
+    root_path ++ "libgit2/src/util/pool.c",
+    root_path ++ "libgit2/src/util/pqueue.c",
+    root_path ++ "libgit2/src/libgit2/proxy.c",
+    root_path ++ "libgit2/src/libgit2/push.c",
+    root_path ++ "libgit2/src/libgit2/reader.c",
+    root_path ++ "libgit2/src/libgit2/rebase.c",
+    root_path ++ "libgit2/src/libgit2/refdb.c",
+    root_path ++ "libgit2/src/libgit2/refdb_fs.c",
+    root_path ++ "libgit2/src/libgit2/reflog.c",
+    root_path ++ "libgit2/src/libgit2/refs.c",
+    root_path ++ "libgit2/src/libgit2/refspec.c",
+    root_path ++ "libgit2/src/util/regexp.c",
+    root_path ++ "libgit2/src/libgit2/remote.c",
+    root_path ++ "libgit2/src/libgit2/repository.c",
+    root_path ++ "libgit2/src/libgit2/reset.c",
+    root_path ++ "libgit2/src/libgit2/revert.c",
+    root_path ++ "libgit2/src/libgit2/revparse.c",
+    root_path ++ "libgit2/src/libgit2/revwalk.c",
+    root_path ++ "libgit2/src/util/runtime.c",
+    root_path ++ "libgit2/src/libgit2/signature.c",
+    root_path ++ "libgit2/src/util/sortedcache.c",
+    root_path ++ "libgit2/src/libgit2/stash.c",
+    root_path ++ "libgit2/src/libgit2/status.c",
+    root_path ++ "libgit2/src/libgit2/strarray.c",
+    root_path ++ "libgit2/src/util/strmap.c",
+    root_path ++ "libgit2/src/libgit2/submodule.c",
+    root_path ++ "libgit2/src/libgit2/sysdir.c",
+    root_path ++ "libgit2/src/libgit2/tag.c",
+    root_path ++ "libgit2/src/util/thread.c",
+    // root_path ++ "libgit2/src/libgit2/threadstate.c",
+    root_path ++ "libgit2/src/libgit2/trace.c",
+    root_path ++ "libgit2/src/libgit2/trailer.c",
+    root_path ++ "libgit2/src/libgit2/transaction.c",
+    root_path ++ "libgit2/src/libgit2/transport.c",
+    root_path ++ "libgit2/src/libgit2/tree.c",
+    root_path ++ "libgit2/src/libgit2/tree-cache.c",
+    root_path ++ "libgit2/src/util/tsort.c",
+    // root_path ++ "libgit2/src/libgit2/utf8.c",
+    root_path ++ "libgit2/src/util/util.c",
+    root_path ++ "libgit2/src/util/varint.c",
+    root_path ++ "libgit2/src/util/vector.c",
+    root_path ++ "libgit2/src/util/wildmatch.c",
+    root_path ++ "libgit2/src/libgit2/worktree.c",
+    root_path ++ "libgit2/src/util/zstream.c",
 };
 
 const pcre_srcs = &.{
@@ -273,25 +285,25 @@ const pcre_srcs = &.{
 };
 
 const posix_srcs = &.{
-    root_path ++ "libgit2/src/posix.c",
+    root_path ++ "libgit2/src/util/posix.c",
 };
 
 const unix_srcs = &.{
-    root_path ++ "libgit2/src/unix/map.c",
-    root_path ++ "libgit2/src/unix/realpath.c",
+    root_path ++ "libgit2/src/util/unix/map.c",
+    root_path ++ "libgit2/src/util/unix/realpath.c",
 };
 
 const win32_srcs = &.{
-    root_path ++ "libgit2/src/win32/dir.c",
-    root_path ++ "libgit2/src/win32/error.c",
-    root_path ++ "libgit2/src/win32/findfile.c",
-    root_path ++ "libgit2/src/win32/map.c",
-    root_path ++ "libgit2/src/win32/path_w32.c",
-    root_path ++ "libgit2/src/win32/posix_w32.c",
-    root_path ++ "libgit2/src/win32/precompiled.c",
-    root_path ++ "libgit2/src/win32/thread.c",
-    root_path ++ "libgit2/src/win32/utf-conv.c",
-    root_path ++ "libgit2/src/win32/w32_buffer.c",
-    root_path ++ "libgit2/src/win32/w32_leakcheck.c",
-    root_path ++ "libgit2/src/win32/w32_util.c",
+    root_path ++ "libgit2/src/util/win32/dir.c",
+    root_path ++ "libgit2/src/util/win32/error.c",
+    // root_path ++ "libgit2/src/win32/findfile.c",
+    root_path ++ "libgit2/src/util/win32/map.c",
+    root_path ++ "libgit2/src/util/win32/path_w32.c",
+    root_path ++ "libgit2/src/util/win32/posix_w32.c",
+    root_path ++ "libgit2/src/util/win32/precompiled.c",
+    root_path ++ "libgit2/src/util/win32/thread.c",
+    root_path ++ "libgit2/src/util/win32/utf-conv.c",
+    root_path ++ "libgit2/src/util/win32/w32_buffer.c",
+    root_path ++ "libgit2/src/util/win32/w32_leakcheck.c",
+    root_path ++ "libgit2/src/util/win32/w32_util.c",
 };
