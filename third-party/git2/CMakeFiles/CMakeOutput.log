@@ -1,0 +1,750 @@
+The system is: Linux - 5.15.153.1-microsoft-standard-WSL2 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/clu/Downloads/libgit2/build/CMakeFiles/3.22.1/CompilerIdC/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_09858/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_09858.dir/build.make CMakeFiles/cmTC_09858.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc   -v -o CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_09858.dir/'
+ /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_09858.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cceBCMA7.s
+GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/gcc/x86_64-linux-gnu/11/include
+ /usr/local/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 50eaa2331df977b8016186198deb2d18
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_09858.dir/'
+ as -v --64 -o CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o /tmp/cceBCMA7.s
+GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.'
+Linking C executable cmTC_09858
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_09858.dir/link.txt --verbose=1
+/usr/bin/cc  -v CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o -o cmTC_09858 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_09858' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_09858.'
+ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/cczgcH6Q.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_09858 /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_09858' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_09858.'
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/gcc/x86_64-linux-gnu/11/include]
+    add: [/usr/local/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/11/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/lib/gcc/x86_64-linux-gnu/11/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_09858/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_09858.dir/build.make CMakeFiles/cmTC_09858.dir/build]
+  ignore line: [gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_09858.dir/']
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_09858.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cceBCMA7.s]
+  ignore line: [GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)]
+  ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 50eaa2331df977b8016186198deb2d18]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_09858.dir/']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o /tmp/cceBCMA7.s]
+  ignore line: [GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.']
+  ignore line: [Linking C executable cmTC_09858]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_09858.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o -o cmTC_09858 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_09858' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_09858.']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/cczgcH6Q.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_09858 /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/11/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cczgcH6Q.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_09858] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..]
+    arg [CMakeFiles/cmTC_09858.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
+  collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
+  collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
+  collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11] ==> [/usr/lib/gcc/x86_64-linux-gnu/11]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/11;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit fwks: []
+
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_034f7/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_034f7.dir/build.make CMakeFiles/cmTC_034f7.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_034f7.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_034f7.dir/CheckIncludeFile.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_034f7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_034f7.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_034f7.dir/CheckIncludeFile.c.o -o cmTC_034f7 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_92c8a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_92c8a.dir/build.make CMakeFiles/cmTC_92c8a.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_92c8a.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_92c8a.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_92c8a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92c8a.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_92c8a.dir/src.c.o -o cmTC_92c8a 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIM succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_cf677/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_cf677.dir/build.make CMakeFiles/cmTC_cf677.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cf677.dir/src.c.o
+/usr/bin/cc -DHAVE_STRUCT_STAT_ST_MTIM   -o CMakeFiles/cmTC_cf677.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_cf677
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cf677.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_cf677.dir/src.c.o -o cmTC_cf677 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtim);
+  return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_NSEC succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f6cf0/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f6cf0.dir/build.make CMakeFiles/cmTC_f6cf0.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f6cf0.dir/src.c.o
+/usr/bin/cc -DHAVE_STRUCT_STAT_NSEC   -o CMakeFiles/cmTC_f6cf0.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_f6cf0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f6cf0.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_f6cf0.dir/src.c.o -o cmTC_f6cf0 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtim.tv_nsec);
+  return 0;
+}
+
+Determining if the function futimens exists passed with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3473e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3473e.dir/build.make CMakeFiles/cmTC_3473e.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3473e.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=futimens -o CMakeFiles/cmTC_3473e.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3473e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3473e.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=futimens CMakeFiles/cmTC_3473e.dir/CheckFunctionExists.c.o -o cmTC_3473e 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+
+Performing C SOURCE FILE Test IS_WALL_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1dc3b/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1dc3b.dir/build.make CMakeFiles/cmTC_1dc3b.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1dc3b.dir/src.c.o
+/usr/bin/cc -DIS_WALL_SUPPORTED  -D_GNU_SOURCE     -Wall -o CMakeFiles/cmTC_1dc3b.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_1dc3b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1dc3b.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE   CMakeFiles/cmTC_1dc3b.dir/src.c.o -o cmTC_1dc3b 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WEXTRA_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_6b106/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_6b106.dir/build.make CMakeFiles/cmTC_6b106.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6b106.dir/src.c.o
+/usr/bin/cc -DIS_WEXTRA_SUPPORTED  -D_GNU_SOURCE  -Wall    -Wextra -o CMakeFiles/cmTC_6b106.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_6b106
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6b106.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall  CMakeFiles/cmTC_6b106.dir/src.c.o -o cmTC_6b106 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_FVISIBILITY_HIDDEN_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_a4219/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a4219.dir/build.make CMakeFiles/cmTC_a4219.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a4219.dir/src.c.o
+/usr/bin/cc -DIS_FVISIBILITY_HIDDEN_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra    -fvisibility=hidden -o CMakeFiles/cmTC_a4219.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a4219
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a4219.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra  CMakeFiles/cmTC_a4219.dir/src.c.o -o cmTC_a4219 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WNO_DOCUMENTATION_DEPRECATED_SYNC_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_4b4fd/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_4b4fd.dir/build.make CMakeFiles/cmTC_4b4fd.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4b4fd.dir/src.c.o
+/usr/bin/cc -DIS_WNO_DOCUMENTATION_DEPRECATED_SYNC_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC    -Wno-documentation-deprecated-sync -o CMakeFiles/cmTC_4b4fd.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_4b4fd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b4fd.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC  CMakeFiles/cmTC_4b4fd.dir/src.c.o -o cmTC_4b4fd 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WNO_MISSING_FIELD_INITIALIZERS_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8e0a6/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8e0a6.dir/build.make CMakeFiles/cmTC_8e0a6.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8e0a6.dir/src.c.o
+/usr/bin/cc -DIS_WNO_MISSING_FIELD_INITIALIZERS_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync    -Wno-missing-field-initializers -o CMakeFiles/cmTC_8e0a6.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_8e0a6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8e0a6.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync  CMakeFiles/cmTC_8e0a6.dir/src.c.o -o cmTC_8e0a6 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WMISSING_DECLARATIONS_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5c12b/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5c12b.dir/build.make CMakeFiles/cmTC_5c12b.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5c12b.dir/src.c.o
+/usr/bin/cc -DIS_WMISSING_DECLARATIONS_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers    -Wmissing-declarations -o CMakeFiles/cmTC_5c12b.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_5c12b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5c12b.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers  CMakeFiles/cmTC_5c12b.dir/src.c.o -o cmTC_5c12b 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WSTRICT_ALIASING_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_46d55/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_46d55.dir/build.make CMakeFiles/cmTC_46d55.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_46d55.dir/src.c.o
+/usr/bin/cc -DIS_WSTRICT_ALIASING_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations    -Wstrict-aliasing -o CMakeFiles/cmTC_46d55.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_46d55
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_46d55.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations  CMakeFiles/cmTC_46d55.dir/src.c.o -o cmTC_46d55 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WSTRICT_PROTOTYPES_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_af975/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_af975.dir/build.make CMakeFiles/cmTC_af975.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_af975.dir/src.c.o
+/usr/bin/cc -DIS_WSTRICT_PROTOTYPES_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing    -Wstrict-prototypes -o CMakeFiles/cmTC_af975.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_af975
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_af975.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing  CMakeFiles/cmTC_af975.dir/src.c.o -o cmTC_af975 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WDECLARATION_AFTER_STATEMENT_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e353f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e353f.dir/build.make CMakeFiles/cmTC_e353f.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e353f.dir/src.c.o
+/usr/bin/cc -DIS_WDECLARATION_AFTER_STATEMENT_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes    -Wdeclaration-after-statement -o CMakeFiles/cmTC_e353f.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e353f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e353f.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes  CMakeFiles/cmTC_e353f.dir/src.c.o -o cmTC_e353f 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WSHIFT_COUNT_OVERFLOW_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_68973/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_68973.dir/build.make CMakeFiles/cmTC_68973.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_68973.dir/src.c.o
+/usr/bin/cc -DIS_WSHIFT_COUNT_OVERFLOW_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement    -Wshift-count-overflow -o CMakeFiles/cmTC_68973.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_68973
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_68973.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement  CMakeFiles/cmTC_68973.dir/src.c.o -o cmTC_68973 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WUNUSED_CONST_VARIABLE_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_9e7a2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_9e7a2.dir/build.make CMakeFiles/cmTC_9e7a2.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9e7a2.dir/src.c.o
+/usr/bin/cc -DIS_WUNUSED_CONST_VARIABLE_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow    -Wunused-const-variable -o CMakeFiles/cmTC_9e7a2.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_9e7a2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9e7a2.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow  CMakeFiles/cmTC_9e7a2.dir/src.c.o -o cmTC_9e7a2 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WUNUSED_FUNCTION_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_fd98a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_fd98a.dir/build.make CMakeFiles/cmTC_fd98a.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fd98a.dir/src.c.o
+/usr/bin/cc -DIS_WUNUSED_FUNCTION_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable    -Wunused-function -o CMakeFiles/cmTC_fd98a.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_fd98a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fd98a.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable  CMakeFiles/cmTC_fd98a.dir/src.c.o -o cmTC_fd98a 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WINT_CONVERSION_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_0b995/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0b995.dir/build.make CMakeFiles/cmTC_0b995.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0b995.dir/src.c.o
+/usr/bin/cc -DIS_WINT_CONVERSION_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function    -Wint-conversion -o CMakeFiles/cmTC_0b995.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_0b995
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0b995.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function  CMakeFiles/cmTC_0b995.dir/src.c.o -o cmTC_0b995 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WC99_C11_COMPAT_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8b11f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8b11f.dir/build.make CMakeFiles/cmTC_8b11f.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8b11f.dir/src.c.o
+/usr/bin/cc -DIS_WC99_C11_COMPAT_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion    -Wc99-c11-compat -o CMakeFiles/cmTC_8b11f.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_8b11f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8b11f.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion  CMakeFiles/cmTC_8b11f.dir/src.c.o -o cmTC_8b11f 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WFORMAT_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_69e88/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_69e88.dir/build.make CMakeFiles/cmTC_69e88.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_69e88.dir/src.c.o
+/usr/bin/cc -DIS_WFORMAT_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat    -Wformat -o CMakeFiles/cmTC_69e88.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_69e88
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69e88.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat  CMakeFiles/cmTC_69e88.dir/src.c.o -o cmTC_69e88 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WFORMAT_SECURITY_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_19c45/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_19c45.dir/build.make CMakeFiles/cmTC_19c45.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_19c45.dir/src.c.o
+/usr/bin/cc -DIS_WFORMAT_SECURITY_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat    -Wformat-security -o CMakeFiles/cmTC_19c45.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_19c45
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_19c45.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat  CMakeFiles/cmTC_19c45.dir/src.c.o -o cmTC_19c45 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WNO_UNUSED_FUNCTION_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b0abc/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b0abc.dir/build.make CMakeFiles/cmTC_b0abc.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b0abc.dir/src.c.o
+/usr/bin/cc -DIS_WNO_UNUSED_FUNCTION_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security    -Wno-unused-function -o CMakeFiles/cmTC_b0abc.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_b0abc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b0abc.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security  CMakeFiles/cmTC_b0abc.dir/src.c.o -o cmTC_b0abc 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test IS_WNO_UNUSED_PARAMETER_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_80368/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_80368.dir/build.make CMakeFiles/cmTC_80368.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_80368.dir/src.c.o
+/usr/bin/cc -DIS_WNO_UNUSED_PARAMETER_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security -Wno-unused-function    -Wno-unused-parameter -o CMakeFiles/cmTC_80368.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_80368
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_80368.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security -Wno-unused-function  CMakeFiles/cmTC_80368.dir/src.c.o -o cmTC_80368 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
+Determining if the prototype qsort_r exists for GIT_QSORT_GNU passed with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_c28c0/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_c28c0.dir/build.make CMakeFiles/cmTC_c28c0.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c28c0.dir/CheckPrototypeDefinition.c.o
+/usr/bin/cc   -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter  -o CMakeFiles/cmTC_c28c0.dir/CheckPrototypeDefinition.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c
+Linking C executable cmTC_c28c0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c28c0.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security -Wno-unused-function -Wno-unused-parameter  CMakeFiles/cmTC_c28c0.dir/CheckPrototypeDefinition.c.o -o cmTC_c28c0 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the getentropy exist passed with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1817d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1817d.dir/build.make CMakeFiles/cmTC_1817d.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1817d.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security  -o CMakeFiles/cmTC_1817d.dir/CheckSymbolExists.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_1817d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1817d.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security  CMakeFiles/cmTC_1817d.dir/CheckSymbolExists.c.o -o cmTC_1817d 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+File /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <unistd.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef getentropy
+  return ((int*)(&getentropy))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the getloadavg exist passed with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_0c44d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_0c44d.dir/build.make CMakeFiles/cmTC_0c44d.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0c44d.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security  -o CMakeFiles/cmTC_0c44d.dir/CheckSymbolExists.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_0c44d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0c44d.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security  CMakeFiles/cmTC_0c44d.dir/CheckSymbolExists.c.o -o cmTC_0c44d 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+File /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef getloadavg
+  return ((int*)(&getloadavg))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the poll exist passed with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_cd66a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_cd66a.dir/build.make CMakeFiles/cmTC_cd66a.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_cd66a.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security  -o CMakeFiles/cmTC_cd66a.dir/CheckSymbolExists.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_cd66a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cd66a.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security  CMakeFiles/cmTC_cd66a.dir/CheckSymbolExists.c.o -o cmTC_cd66a 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+File /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <poll.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef poll
+  return ((int*)(&poll))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the select exist passed with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e6f0b/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e6f0b.dir/build.make CMakeFiles/cmTC_e6f0b.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e6f0b.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security  -o CMakeFiles/cmTC_e6f0b.dir/CheckSymbolExists.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_e6f0b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6f0b.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security  CMakeFiles/cmTC_e6f0b.dir/CheckSymbolExists.c.o -o cmTC_e6f0b 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+File /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <sys/select.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef select
+  return ((int*)(&select))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function clock_gettime exists in the rt passed with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_502fa/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_502fa.dir/build.make CMakeFiles/cmTC_502fa.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_502fa.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=clock_gettime -o CMakeFiles/cmTC_502fa.dir/CheckFunctionExists.c.o -c /usr/share/cmake-3.22/Modules/CheckFunctionExists.c
+Linking C executable cmTC_502fa
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_502fa.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security -DCHECK_FUNCTION_EXISTS=clock_gettime CMakeFiles/cmTC_502fa.dir/CheckFunctionExists.c.o -o cmTC_502fa   -L/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/time.h  -Wl,-rpath,/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/time.h -lrt 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+
+Performing C SOURCE FILE Test IS_WNO_IMPLICIT_FALLTHROUGH_SUPPORTED succeeded with the following output:
+Change Dir: /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_76716/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_76716.dir/build.make CMakeFiles/cmTC_76716.dir/build
+gmake[1]: Entering directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_76716.dir/src.c.o
+/usr/bin/cc -DIS_WNO_IMPLICIT_FALLTHROUGH_SUPPORTED  -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security    -Wno-implicit-fallthrough -o CMakeFiles/cmTC_76716.dir/src.c.o -c /home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_76716
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76716.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE  -Wall -Wextra -fvisibility=hidden -fPIC -Wno-documentation-deprecated-sync -Wno-missing-field-initializers -Wmissing-declarations -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wint-conversion -Wc99-c11-compat -Wformat -Wformat-security  CMakeFiles/cmTC_76716.dir/src.c.o -o cmTC_76716 
+gmake[1]: Leaving directory '/home/clu/Downloads/libgit2/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main(void) { return 0; }
