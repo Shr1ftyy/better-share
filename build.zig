@@ -1,6 +1,37 @@
 const std = @import("std");
-// TODO: use libgit.zig
-const libgit2 = @import("libgit2.zig");
+
+fn root() []const u8 {
+    return std.fs.path.dirname(@src().file) orelse unreachable;
+}
+
+const root_path = root() ++ "/";
+
+fn runCMake(b: *std.Build) !void {
+    const cmake_step = b.step("cmake", "Run CMake");
+
+    const cmake_cmd = b.addSystemCommand(&[_][]const u8{
+        "cmake",
+        "-S", "libgit2", // Source directory
+        "-B", "libgit2/build", // Build directory
+        // "-DCMAKE_C_FLAGS=-I\\ " ++ root_path ++ "third-party/http-parser", "-DBUILD_SHARED_LIBS=0",
+        // // TODO: womp womp ;(
+        // // "-DLINK_WITH_STATIC_LIBRARIES=1",
+        // "-DLIBGIT2_NO_FEATURES_H=1",                                       "-DGIT_IO_POLL=1",
+        // "-DGIT_TRACE=1",                                                   "-DGIT_THREADS=0",
+        // "-DGIT_USE_FUTIMENS=1", // "-DGIT_REGEX_PCRE=1",
+        // "-DGIT_SSH=0",
+        // "-DGIT_SSH_MEMORY_CREDENTIALS=1",
+        // "-DGIT_HTTPS=1",
+        // "-DGIT_MBEDTLS=0",
+        // "-DGIT_SHA1_MBEDTLS=0",
+        // "-DGIT_SHA256_MBEDTLS=0",
+        // "-DGIT_HTTPPARSER_LLHTTP=1",
+        // "-DGIT_HTTPPARSER_HTTPPARSER=1",
+        // "-G", "Ninja", // Optional: Use Ninja generator
+    });
+
+    cmake_step.dependOn(&cmake_cmd.step);
+}
 
 // Although this function looks imperative, note that its job is to
 // declaratively construct a build graph that will be executed by an external
@@ -38,52 +69,26 @@ pub fn build(b: *std.Build) !void {
         .optimize = optimize,
     });
 
-    // TODO: use libgit.zig
-    const libgit = try libgit2.create(b, target, optimize);
-
-    // libgit.linkSystemLibrary("ssl");
-    // libgit.linkSystemLibrary("crypto");
-    // const mbedtls = b.dependency("mbedtls", .{ .target = target, .optimize = optimize });
-    // libgit.linkLibrary(mbedtls.artifact("mbedtls"));
-
-    // const zlib = b.dependency("zlib", .{ .target = target, .optimize = optimize });
-    // libgit.linkLibrary(zlib.artifact("z"));
-
-    // const ssh2 = b.dependency("ssh2", .{ .target = target, .optimize = optimize });
-    // libgit.linkLibrary(ssh2.artifact("ssh2"));
-
-    // libgit.installHeadersDirectory(b.path("libgit2/include"), "", .{});
-
     exe.addIncludePath(b.path("libgit2/include"));
-    // exe.addIncludePath(b.path("libgit2/src"));
-    // exe.addIncludePath(b.path("libgit2/src/libgit2"));
-    // exe.addIncludePath(b.path("libgit2/deps/pcre"));
 
-    b.installArtifact(libgit);
+    try runCMake(b);
 
-    exe.linkLibrary(libgit);
-    // exe.linkSystemLibrary(libgit);
-    // libgit.link(exe);
+    // Optional: Add a build step that depends on CMake
+    const make_step = b.step("build", "Build with cmake");
+    const make_cmd = b.addSystemCommand(&[_][]const u8{
+        "cmake",
+        "--build",
+        "libgit2/build",
+    });
+    make_step.dependOn(&make_cmd.step);
 
-    // exe.linkLibC();
-    // exe.addIncludePath(b.path("include/"));
+    exe.linkLibC();
+    exe.addIncludePath(b.path("include/"));
 
-    // const target_os = target.query.os_tag orelse .macos;
-    // // const target_arch = target.arch;
-    // switch (target_os) {
-    //     .linux => {
-    //         exe.addLibraryPath(b.path("third-party/git2"));
-    //     },
-    //     .macos => {
-    //         const brewIncludeStr = "/opt/homebrew/lib/";
-    //         exe.addLibraryPath(.{ .cwd_relative = brewIncludeStr });
-    //     },
-    //     else => {
-    //         @panic("Unsupported platform");
-    //     },
-    // }
+    exe.addLibraryPath(b.path("libgit2/build"));
 
-    // exe.linkSystemLibrary("git2");
+    exe.linkSystemLibrary("git2");
+    // exe.addObjectFile(b.path("libgit2/build/libgit2.a"));
 
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default
